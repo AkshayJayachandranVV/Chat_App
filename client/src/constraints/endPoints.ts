@@ -7,4 +7,5 @@ export const EndPoints = {
       login : `${BACKEND_URL}/user/login`,
       profile : `${BACKEND_URL}/user/profile`,
       chatUsers : `${BACKEND_URL}/chat/chatUsers`,
+      createChat : `${BACKEND_URL}/chat/createChat`,
 }

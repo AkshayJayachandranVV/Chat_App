@@ -18,10 +18,8 @@ export class ChatService {
       const allUsers = await this.userRepository.find({
         where: {
           id: Not(Number(id)) 
-        },select : ['username']
+        },select : ['username','id']
       });
-
-      console.log(allUsers)
 
       if(!allUsers){
         throw new NotFoundException('No Users')
@@ -34,7 +32,6 @@ export class ChatService {
       throw error
     }
   }
-
 
   findAll() {
     return `This action returns all chat`;

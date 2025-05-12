@@ -15,23 +15,23 @@ import { ApiSerivice } from '../../constraints/apiSerivice';
 export class ChatComponent implements OnInit {
   socket !: Socket
   message: string = '';
-  // messages: string[] = [];
-  // users: { username: string }[] = []; 
+  messages: string[] = [];
+  users: { username: string ,id: number}[] = []; 
 
-  users = [
-    { id: 1, name: 'Alice' },
-    { id: 2, name: 'Bob' },
-    { id: 3, name: 'Charlie' },
-  ];
+  // users = [
+  //   { id: 1, name: 'Alice' },
+  //   { id: 2, name: 'Bob' },
+  //   { id: 3, name: 'Charlie' },
+  // ];
 
 
   selectedUser: any = null;
 
-  messages = {
-    1: ['Hi Alice!', 'How are you?'],
-    2: ['Hey Bob!', 'Ready for the meeting?'],
-    3: ['Yo Charlie!', 'Let’s catch up later.'],
-  };
+  // messages = {
+  //   1: ['Hi Alice!', 'How are you?'],
+  //   2: ['Hey Bob!', 'Ready for the meeting?'],
+  //   3: ['Yo Charlie!', 'Let’s catch up later.'],
+  // };
 
 
   currentMessages: string[] = [];
@@ -56,7 +56,7 @@ export class ChatComponent implements OnInit {
         (response : any) => {
           console.log(response)
           if(response && response.result){
-            // this.users = response.result
+            this.users = response.result
           }
         },
         (error)=>{
@@ -66,15 +66,23 @@ export class ChatComponent implements OnInit {
     }
   }
 
-  selectUser(user: any) {
+  selectUser(id: any) {
+
+    const user = this.users.find(user => user.id == id)
     this.selectedUser = user;
+
+
+    this
+
     // this.currentMessages = this.messages[user.id] || [];
   }
 
   sendMessage() {
-    if (this.message.trim()) {
+    console.log("entered message",this.message)
+    if (this.newMessage.trim()) {
+      console.log("entered message2")
       this.socket.emit('sendMessage', this.message);
-      // this.messages.push(this.message);
+      this.messages.push(this.message);
       this.message = '';
     }
   }

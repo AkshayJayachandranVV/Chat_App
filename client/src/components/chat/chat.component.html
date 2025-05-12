@@ -36,14 +36,14 @@
       [class.active]="selectedUser?.id === user.id"
       (click)="selectUser(user.id)"
     >
-      {{ user.name }}
+      {{ user.username }}
     </div>
   </div>
 
   <!-- Right Chat Area -->
   <div class="chat-box" *ngIf="selectedUser">
     <div class="chat-header">
-      Chatting with {{ selectedUser.name }}
+      Chatting with {{ selectedUser.username }}
     </div>
 
     <!-- Message Area -->
