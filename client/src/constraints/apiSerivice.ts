@@ -17,8 +17,9 @@ export class ApiSerivice {
         return this.http.post(EndPoints.login,formData)
     }
 
-    chatUsers(){
-        return this.http.get(EndPoints.chatUsers)
+    chatUsers(id : number){
+        console.log(`${EndPoints.chatUsers}/${id}`)
+        return this.http.get(`${EndPoints.chatUsers}/${id}`)
     }
 
 
