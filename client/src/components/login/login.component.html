@@ -1,0 +1,51 @@
+<div class="flex justify-content-center align-items-center min-h-screen">
+    <div class="flex flex-column gap-3 p-4 surface-card shadow-2 border-round w-30rem">
+    <h1 class="flex justify-content-center">Login</h1>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate class="flex flex-column gap-3">
+
+ 
+
+
+      <div class="flex flex-column gap-2">
+        <label for="email">Email</label>
+        <input
+          pInputText
+          id="email"
+          aria-describedby="email-help"
+          formControlName="email" 
+        />
+        <small class="p-error" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+            Email is required
+          </small>
+      </div>
+
+
+
+      <div class="flex flex-column gap-2">
+        <label for="Password">Password</label>
+        <input
+          pInputText
+          id="password"
+          aria-describedby="password-help"
+          formControlName="password" 
+        />
+        <small class="p-error" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+            Password is required
+          </small>
+      </div>
+      <div *ngIf="errMessage" class="p-error text-red-500 mb-3 text-sm">{{ errMessage }}</div>
+
+
+      <button pButton type="submit" label="Login" [rounded]="true" severity="success"></button>
+
+
+</form>
+
+
+<p class="text-center mt-3" >
+    Dont have any account? <a class="text-primary" [routerLink]="['/signup']">Signup here </a>
+ </p>
+
+
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<p-menubar [model]="items" class="shadow-md bg-white border border-gray-200 rounded-lg">
+  <ng-template pTemplate="start">
+    <div class="flex items-center space-x-3">
+      <span class="text-2xl font-semibold text-blue-600">MyApp</span>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <button 
+      pButton 
+      icon="pi pi-sign-out" 
+      label="Logout" 
+      class="p-button-rounded p-button-outlined p-button-danger"
+      (click)="logout()"
+    ></button>
+  </ng-template>
+</p-menubar>
